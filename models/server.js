@@ -9,10 +9,17 @@ class Server{
         this.usuariosPath = '/api/usuarios';
         
         this.connectarDB();
+        this.middlewares();
     }
 
     async connectarDB(){
         await dbConnection();
+    }
+
+    middlewares(){
+        this.app.use(express.static('public'));
+        this.app.use(cors());
+        this.app.use(express.json());
     }
 
     listen(){
