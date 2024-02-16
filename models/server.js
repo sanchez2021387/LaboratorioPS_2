@@ -10,10 +10,15 @@ class Server{
         
         this.connectarDB();
         this.middlewares();
+        this.routes();
     }
 
     async connectarDB(){
         await dbConnection();
+    }
+    
+    routes(){
+        this.app.use(this.usuariosPath, require('../routers/user.routes'));
     }
 
     middlewares(){
